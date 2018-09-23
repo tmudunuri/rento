@@ -9,8 +9,8 @@ module.exports = function(app) {
 		res.render('pages/about');
 	});
 
-	app.get('/main', function(req, res) {
-		res.render('pages/main');
+	app.get('/tenant', function(req, res) {
+		res.render('pages/tenant');
 	});
 	
 	app.get('/contact', function(req, res) {

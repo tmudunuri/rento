@@ -6,7 +6,7 @@ controller.list = (req, res) => {
      if (err) {
       res.json(err);
     }
-    res.render('pages/main', {
+    res.render('pages/tenant', {
       data: app
     });
   });
@@ -19,7 +19,7 @@ controller.save = (req, res) => {
   req.getConnection((err, connection) => {
     const query = connection.query('INSERT INTO TENANT set ?', data, (err, customer) => {
       console.log(customer)
-      res.redirect('/main');
+      res.redirect('/tenant');
     })
   })
 };
@@ -41,7 +41,7 @@ controller.update = (req, res) => {
   const newTenant = req.body;
   req.getConnection((err, conn) => {
     conn.query('UPDATE TENANT set ? WHERE TID = ?', [newTenant, TID], (err, rows) => {
-      res.redirect('/main');
+      res.redirect('/tenant');
     });
   });
 };
@@ -50,7 +50,7 @@ controller.delete = (req, res) => {
   const { TID } = req.params;
   req.getConnection((err, connection) => {
     connection.query('DELETE FROM TENANT WHERE TID = ?', [TID], (err, rows) => {
-      res.redirect('/main');
+      res.redirect('/tenant');
     });
   });
 }

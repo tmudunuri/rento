@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<% include ../partials/head %>
+
+<body>
+
+  <% include ../partials/nav %>
+
+  <!-- Trigger/Open The Modal -->
+  <button id="b1">Open Modal</button>
+
+  <div id ="m1"class="modal">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Add Tenant</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" style="overflow-y: scroll; height:400px;">
+          <form action="/tenant/add" method="POST">
+            <div class="form-group">
+              <input type="text" name="FNAME" placeholder="First Name" class="form-control" autofocus>
+            </div>
+            <div class="form-group">
+              <input type="text" name="MINIT" placeholder="Middle Name" class="form-control" autofocus>
+            </div>
+            <div class="form-group">
+              <input type="text" name="LNAME" placeholder="Last Name" class="form-control" autofocus>
+            </div>
+
+            <div class="form-group">
+              <input type="text" name="AADHAR" placeholder="Aadhar" class="form-control" autofocus>
+            </div>
+            <div class="form-group">
+              <input type="text" name="ADDRESS" placeholder="Address" class="form-control" autofocus>
+            </div>
+            <div class="form-group">
+              <input type="text" name="PHONE" placeholder="Phone" class="form-control" autofocus>
+            </div>
+            <div class="form-group">
+              <input type="text" name="GENDER" placeholder="Gender" class="form-control" autofocus>
+            </div>
+            <div class="form-group">
+              <input type="text" name="BDATE" placeholder="Date of Birth" class="form-control">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Add Tenant</button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div> 
+
+  <script>
+  // Get the modal
+  var modal = document.getElementById('m1');
+
+// Get the button that opens the modal
+var btn = document.getElementById("b1");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+} 
+</script>
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-7">
+
+     <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link active show" data-toggle="tab" href="#">Tenant</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="/property">Property</a>
+      </li>
+<!--         <li class="nav-item">
+          <a class="nav-link disabled" href="#">Disabled</a>
+        </li> -->
+      </ul>
+
+    </div> 
+  </div>
+</div>
+
+<div class="container mt-5" style="overflow-y: scroll; height:400px;">
+  <div class="row">
+    <div class="col-md-7">
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <td>n°</td>
+            <td>Name</td>
+            <td>Aadhar</td>
+            <td>Address</td>
+            <td>Phone</td>
+            <td>Gender</td>
+            <td>Age</td>
+            <td>D.O.B</td>
+            <td>Actions</td>
+          </tr>
+        </thead>
+        <tbody>
+          <% if (data) { %>
+          <% for(var i = 0; i < data.length; i++) { %>
+          <tr>
+            <td><%= data[i].TID %></td>
+            <td><%= data[i].NAME %></td>
+            <td><%= data[i].AADHAR %></td>
+            <td><%= data[i].ADDRESS %></td>
+            <td><%= data[i].PHONE %></td>
+            <td><%= data[i].GENDER %></td>
+            <td><%= data[i].AGE %></td>
+            <td><%= data[i].BDATE %></td>
+            <td>
+              <a href="/tenant/update/<%= data[i].TID %>" class="btn btn-info">Edit</a>
+              <a href="/tenant/delete/<%= data[i].TID %>" class="btn btn-danger">Delete</a>
+            </td>
+          </tr>
+          <% } %>
+          <% } %>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>
+
+
+<% include ../partials/scripts %> 
+
+</body>
+
+</html>

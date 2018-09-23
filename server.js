@@ -14,7 +14,7 @@ var port = process.env.PORT || 3000;
 var app = express();
 
 // importing routes
-const mainRoutes = require('./routes/main');
+const tenantRoutes = require('./routes/tenant');
 
 
 // ================================================================
@@ -39,7 +39,7 @@ app.use(express.urlencoded({extended: false}));
 // ================================================================
 // setup routes
 // ================================================================
-app.use('/main', mainRoutes);
+app.use('/tenant', tenantRoutes);
 routes(app);
 
 // ================================================================
