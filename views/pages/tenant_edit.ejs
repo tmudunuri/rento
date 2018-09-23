@@ -3,32 +3,50 @@
 
 <% include ../partials/head %>
 <body>
-  
+
   <% include ../partials/nav %>
 
   <div class="container mt-5">
     <div class="row">
       <div class="col-md-5 offset-md-3 card">
         <div class="card-body">
-          <form action="/main/update/<%= data.id %>" method="POST">
+
+          <form action="/main/update/<%= data.TID %>" method="POST">
+
             <div class="form-group">
-              <input type="text" name="name" value="<%= data.name%>" placeholder="Name" class="form-control" autofocus>
+              <input type="text" name="FNAME" value="<%= data.FNAME%>" placeholder="First Name"  class="form-control" autofocus>
             </div>
             <div class="form-group">
-              <input type="text" name="address" value="<%= data.address%>" placeholder="Address" class="form-control">
+              <input type="text" name="MINIT" value="<%= data.MINIT%>" placeholder="Middle Name" class="form-control" autofocus>
             </div>
             <div class="form-group">
-              <input type="text" name="phone" value="<%= data.phone%>" placeholder="Phone" class="form-control">
+              <input type="text" name="LNAME" value="<%= data.LNAME%>" placeholder="Last Name" class="form-control" autofocus>
+            </div>
+            <div class="form-group">
+              <input type="text" name="AADHAR" value="<%= data.AADHAR%>" placeholder="Aadhar" class="form-control" autofocus>
+            </div>
+            <div class="form-group">
+              <input type="text" name="ADDRESS" value="<%= data.ADDRESS%>" placeholder="Address" class="form-control" autofocus>
+            </div>
+            <div class="form-group">
+              <input type="text" name="PHONE" value="<%= data.PHONE%>" placeholder="Phone" class="form-control" autofocus>
+            </div>
+            <div class="form-group">
+              <input type="text" name="GENDER" value="<%= data.GENDER%>" placeholder="Gender" class="form-control" autofocus>
+            </div>
+            <div class="form-group">
+              <input type="text" name="BDATE" placeholder="Date of Birth" class="form-control">
             </div>
 
-            <button type="submit" class="btn btn-primary">
-              save customer
-            </button>
+            <button type="submit" class="btn btn-primary">Update Tenant</button>
           </form>
+
         </div>
       </div>
     </div>
   </div>
+
+  <% include ../partials/scripts %> 
 
 </body>
 
