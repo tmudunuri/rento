@@ -1,0 +1,27 @@
+{
+  "name": "property_rental_management",
+  "version": "1.0.0",
+  "description": "CRUD Application to manage property rentals.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tmudunuri/property-rental-management.git"
+  },
+  "author": "Thrivikram Mudunuri",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tmudunuri/property-rental-management/issues"
+  },
+  "homepage": "https://github.com/tmudunuri/property-rental-management#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "ejs": "^2.6.1",
+    "express": "^4.16.3",
+    "express-fileupload": "^1.0.0-alpha.1",
+    "mysql": "^2.16.0",
+    "req-flash": "0.0.3"
+  }
+}
