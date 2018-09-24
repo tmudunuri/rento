@@ -35,7 +35,7 @@
 </div>
 
 
-<div class="container mt-5">
+<div class="container mt-2">
 
   <table class="table table-bordered table-hover">
     <tr>
@@ -101,7 +101,7 @@
             <td><%= data[i].AGE %></td>
             <td><%= data[i].BDATE %></td>
             <td>
-              <a  href="/tenant/update/<%= data[i].TID %>" class="btn btn-info">Edit</a>
+              <a href="/tenant/update/<%= data[i].TID %>" class="btn btn-info">Edit</a>
               <a href="/tenant/delete/<%= data[i].TID %>" class="btn btn-danger">Delete</a>
             </td>
           </tr>
@@ -156,7 +156,7 @@
 
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-primary">Add Tenant</button>
+          <button type="submit" class="btn btn-success">Add Tenant</button>
           <button id = "button_cancel" type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
         </form>
       </div>
