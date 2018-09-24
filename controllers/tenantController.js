@@ -29,7 +29,7 @@ controller.edit = (req, res) => {
   const { TID } = req.params;
   req.getConnection((err, conn) => {
     conn.query('SELECT * FROM TENANT WHERE TID = ?', [TID], (err, rows) => {
-      res.render('pages/tenant_edit', {
+      res.render('pages/tenant', {
         data: rows[0]
       })
     });
