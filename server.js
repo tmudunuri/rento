@@ -26,11 +26,11 @@ app.set('view engine', 'ejs');
 // middlewares
 app.use(morgan('dev'));
 app.use(myConnection(mysql, {
-  host: 'localhost',
-  user: 'root',
-  password: 'password',
+  host: 'ol5tz0yvwp930510.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
+  user: 'dyi2o9a8uhijcrga',
+  password: 'nocqgf767rzbmry1',
   port: 3306,
-  database: 'propertyrentalmanagement'
+  database: 'thm01jearyo4v2jw'
 }, 'single'));
 app.use(express.urlencoded({extended: false}));
 
