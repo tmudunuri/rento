@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<% include ../partials/head %>
+<body>
+
+  <% include ../partials/nav %>
+
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-md-5 offset-md-3 card">
+        <div class="card-body">
+
+          <form action="/property/update/<%= data.TID %>" method="POST">
+            <div class="form-group">
+              <label for="TYPE" class="col-form-label col-form-label-sm">Property Type</label>
+              <select name="TYPE" class="custom-select">
+                <option selected="<%= data.TYPE%>"><%= data.TYPE%></option>
+                <option value="Apartment">Apartment</option>
+                <option value="Bungalow">Bungalow</option>
+                <option value="Cottage">Cottage</option>
+                <option value="Duplex">Duplex</option>
+                <option value="Farmhouse">Farmhouse</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="ADDRESS" class="col-form-label col-form-label-sm">Address</label>
+              <input type="text" name="ADDRESS" value="<%= data.ADDRESS%>" placeholder="Address" class="form-control" required pattern = "[A-Za-z0-9 .#-]+">
+            </div>
+            <div class="form-group">
+              <label for="FLOORS" class="col-form-label col-form-label-sm">Floors</label>
+              <input type="number" name="FLOORS" value="<%= data.FLOORS%>" placeholder="Floors" class="form-control" required pattern = "[0-9]+">
+            </div>
+            <div class="form-group">
+              <label for="CAPACITY" class="col-form-label col-form-label-sm">Capacity</label>
+              <input type="number" name="CAPACITY" value="<%= data.CAPACITY%>" placeholder="Capacity" class="form-control" required pattern = "[0-9]+">
+            </div>
+
+            <button type="submit" class="btn btn-outline-success">Update Property</button>
+            <a href="/property"> <button type="button" class="btn btn-outline-danger">Cancel</button></a>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <% include ../partials/footer %> 
+  <% include ../partials/scripts %> 
+
+</body>
+
+</html>

@@ -28,8 +28,7 @@
   <div class="row">
     <div class="btn-group" role="group" aria-label="Basic example">
       <button id="button_add" type="button" class="btn btn-secondary">Add</button>
-      <button type="button" class="btn btn-secondary">Refresh</button>
-      <button type="button" class="btn btn-secondary">Right</button>
+      <a href="/tenant"><button type="button" class="btn btn-secondary">Refresh</button></a>
     </div>
   </div>
 </div>
@@ -119,47 +118,63 @@
 <!-- The Add Modal -->
 <div id ="modal_add"class="modal">
   <div class="modal-dialog" role="document">
+
     <div class="modal-content">
+
       <div class="modal-header">
         <h5 class="modal-title">Add Tenant</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body" style="overflow-y: scroll; height:400px;">
-        <form action="/tenant/add" method="POST">
-          <div class="form-group">
-            <input type="text" name="FNAME" placeholder="First Name" class="form-control" autofocus>
-          </div>
-          <div class="form-group">
-            <input type="text" name="MINIT" placeholder="Middle Name" class="form-control" autofocus>
-          </div>
-          <div class="form-group">
-            <input type="text" name="LNAME" placeholder="Last Name" class="form-control" autofocus>
-          </div>
+      <div class="modal-body" style="overflow-y: scroll; max-height:500px;">
+
+        <form action="/tenant/update/<%= data.TID %>" method="POST">
 
           <div class="form-group">
-            <input type="text" name="AADHAR" placeholder="Aadhar" class="form-control" autofocus>
+            <label for="FNAME" class="col-form-label col-form-label-sm">First Name</label>
+            <input type="text" name="FNAME" value="<%= data.FNAME%>" placeholder="First Name"  class="form-control" required pattern="[A-Za-z ]+">
           </div>
           <div class="form-group">
-            <input type="text" name="ADDRESS" placeholder="Address" class="form-control" autofocus>
+            <label for="MINIT" class="col-form-label col-form-label-sm">Middle Name</label>
+            <input type="text" name="MINIT" value="<%= data.MINIT%>" placeholder="Middle Name" class="form-control" required pattern="[A-Za-z ]*">
           </div>
           <div class="form-group">
-            <input type="text" name="PHONE" placeholder="Phone" class="form-control" autofocus>
+            <label for="LNAME" class="col-form-label col-form-label-sm">Last Name</label>
+            <input type="text" name="LNAME" value="<%= data.LNAME%>" placeholder="Last Name" class="form-control" required pattern="[A-Za-z ]+">
           </div>
           <div class="form-group">
-            <input type="text" name="GENDER" placeholder="Gender" class="form-control" autofocus>
+            <label for="AADHAR" class="col-form-label col-form-label-sm">Aadhar</label>
+            <input type="text" name="AADHAR" value="<%= data.AADHAR%>" placeholder="Aadhar" class="form-control" required pattern="[0-9]{12}">
           </div>
           <div class="form-group">
-            <input type="text" name="BDATE" placeholder="Date of Birth" class="form-control">
+            <label for="ADDRESS" class="col-form-label col-form-label-sm">Address</label>
+            <input type="text" name="ADDRESS" value="<%= data.ADDRESS%>" placeholder="Address" class="form-control" required pattern = "[A-Za-z0-9 .#-]+">
+          </div>
+          <div class="form-group">
+            <label for="PHONE" class="col-form-label col-form-label-sm">Phone</label>
+            <input type="text" name="PHONE" value="<%= data.PHONE%>" placeholder="Phone" class="form-control" required pattern="[0-9]{10}">
+
+          </div>
+          <div class="form-group">
+            <label for="GENDER" class="col-form-label col-form-label-sm">Gender</label>
+            <select name="GENDER" class="custom-select">
+              <option selected="<%= data.GENDER%>">Gender</option>
+              <option value="M">Male</option>
+              <option value="F">Female</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="bdate
+            " class="col-form-label col-form-label-sm">Date of Birth</label>
+            <input type="date" name="BDATE" class="form-control" required>
           </div>
 
-        </div>
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-success">Add Tenant</button>
-          <button id = "button_cancel" type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn btn-outline-success">Update Tenant</button>
+          <button id = "button_cancel" type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>
         </form>
       </div>
+
     </div>
   </div>
 </div> 

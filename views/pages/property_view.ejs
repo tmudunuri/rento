@@ -28,7 +28,7 @@
   <div class="row">
     <div class="btn-group" role="group" aria-label="Basic example">
       <button id="button_add" type="button" class="btn btn-secondary">Add</button>
-      <a href="/property"><button type="button" class="btn btn-secondary">Refresh</button></a>
+      <a href="/house"><button type="button" class="btn btn-secondary">Refresh</button></a>
     </div>
   </div>
 </div>
@@ -39,10 +39,10 @@
   <table class="table table-bordered table-hover">
     <tr>
       <td>
-        <input id="pid_filter" class="form-control form-control-sm" onkeyup="property_filter(0)" placeholder="PID"type="text">
+        <input id="pid_filter" class="form-control form-control-sm" onkeyup="house_filter(0)" placeholder="HID"type="text">
       </td>
       <td>
-        <input id="type_filter" class="form-control form-control-sm" onkeyup="property_filter(1)" placeholder="Type"type="text">
+        <input id="type_filter" class="form-control form-control-sm" onkeyup="house_filter(1)" placeholder="Type"type="text">
       </td>
     </tr>
   </table>
@@ -54,21 +54,26 @@
 
 <div class="container mt-2 mx-auto" style="overflow-y: scroll; height:auto; max-height: 520px">
 
-  <div id = "property_table" class="row mx-auto">
+  <div id = "house_table" class="row mx-auto">
    <% if (data) { %>
    <% var len = data.length %>
    <% for(var i = 0; i < len; i++) { %>
 
    <div class="card text-white bg-dark mb-4 mx-auto" style="max-width: 20rem;">
-    <span class="card-header"><%= data[i].PID %></span>
+    <span class="card-header"><%= data[i].HID %></span>
     <span class="card-body">
      <h4 class="card-title pt"><%= data[i].TYPE %></h4>
-     <p class="card-text">Floors : <%= data[i].FLOORS %></p>
-     <p class="card-text">Capacity : <%= data[i].CAPACITY %></p>
-     <p class="card-text"><%= data[i].ADDRESS %></p>
-     <a href="/property/view/<%= data[i].PID %>" class="btn btn-outline-warning btn-sm">View</a>
-     <a href="/property/update/<%= data[i].PID %>" class="btn btn-outline-info btn-sm">Edit</a>
-     <a href="/property/update/<%= data[i].PID %>" class="btn btn-outline-danger btn-sm">Delete</a>
+     <ul>
+       <li class="card-text">Floor : <%= data[i].FLOOR %></li>
+       <li class="card-text">Rooms : <%= data[i].ROOMS %></li>
+       <li class="card-text">Area : <%= data[i].AREA %> sqft</li>
+       <li class="card-text">Parking : <%= data[i].PARKING %></li>
+       <li class="card-text">Furnished : <%= data[i].FURNISHED %></li>
+       <li class="card-text">Maintenance : ₹<%= data[i].MAINTENANCE %></li>
+     </ul>
+     <a href="/house/view/<%= data[i].HID %>" class="btn btn-outline-warning btn-sm">View</a>
+     <a href="/house/update/<%= data[i].HID %>" class="btn btn-outline-info btn-sm">Edit</a>
+     <a href="/house/update/<%= data[i].HID %>" class="btn btn-outline-danger btn-sm">Delete</a>
    </span>
  </div>
  <% } %>
@@ -89,7 +94,7 @@
         </button>
       </div>
       <div class="modal-body" style="overflow-y: scroll; max-height:500px;">
-       <form action="/property/update/<%= data.TID %>" method="POST">
+       <form action="/house/update/<%= data.TID %>" method="POST">
         <div class="form-group">
           <label for="TYPE" class="col-form-label col-form-label-sm">Property Type</label>
           <select name="TYPE" class="custom-select">
@@ -162,7 +167,7 @@ window.onclick = function(event) {
 
 <!-- Table Filter -->
 <script>
-  function property_filter(j) {
+  function house_filter(j) {
   // Declare variables
   var input, filter, table, tr, td, i;
   switch(j) {
@@ -170,7 +175,7 @@ window.onclick = function(event) {
     case 1 : input = document.getElementById("type_filter"); break;
   }
   filter = input.value.toUpperCase();
-  table = document.getElementById("property_table");
+  table = document.getElementById("house_table");
   tr = table.getElementsByTagName("div");
 
   // Loop through all table rows, and hide those who don't match the search query
