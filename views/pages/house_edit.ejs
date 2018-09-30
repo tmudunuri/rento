@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<% include ../partials/head %>
+<body>
+
+  <% include ../partials/nav %>
+
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-md-5 offset-md-3 card">
+        <div class="card-body">
+
+          
+          <form action="/house/update/<%= data.HID %>" method="POST">
+            <div class="form-group">
+              <label for="TYPE" class="col-form-label col-form-label-sm">Property Type</label>
+              <select name="TYPE" class="custom-select">
+                <option selected="<%= data.TYPE%>"><%= data.TYPE%></option>
+                <option value="Apartment">Apartment</option>
+                <option value="Bungalow">Bungalow</option>
+                <option value="Cottage">Cottage</option>
+                <option value="Duplex">Duplex</option>
+                <option value="Farmhouse">Farmhouse</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="FLOOR" class="col-form-label col-form-label-sm">Floor</label>
+              <input type="number" name="FLOOR" value="<%= data.FLOOR%>" placeholder="Floor" class="form-control" required pattern = "[0-9]{0-3}">
+            </div>
+            <div class="form-group">
+              <label for="ROOMS" class="col-form-label col-form-label-sm">Rooms</label>
+              <input type="number" name="ROOMS" value="<%= data.ROOMS%>" placeholder="Rooms" class="form-control" required pattern = "[0-9]{1-2}">
+            </div>
+            <div class="form-group">
+              <label for="AREA" class="col-form-label col-form-label-sm">Area</label>
+              <input type="number" name="AREA" value="<%= data.AREA%>" placeholder="square feet" class="form-control" required pattern = "[0-9]{1-10}">
+            </div>
+
+            <div class="form-group">
+
+              <div class="form-group">
+                <label for="PARKING" class="col-form-label col-form-label-sm">Parking</label>
+                <select name="PARKING" class="custom-select">
+                  <option selected="<%= data.PARKING%>"><%= data.PARKING%></option>
+                  <option value = 1 >Available [1]</option>
+                  <option value = 0>Unavailable [0]</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="FURNISHED" class="col-form-label col-form-label-sm">Furnished</label>
+                <select name="FURNISHED" class="custom-select">
+                  <option selected="<%= data.FURNISHED%>"><%= data.FURNISHED%></option>
+                  <option value= 1 >Furnished [1]</option>
+                  <option value= 0 >Unfurnished [0]</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="MAINTENANCE" class="col-form-label col-form-label-sm">Maintenance</label>
+                <input type="number" name="MAINTENANCE" value="<%= data.MAINTENANCE%>" placeholder="Maintenance" class="form-control" required pattern = "[0-9]{1-10}">
+              </div>
+
+
+              <button type="submit" class="btn btn-outline-success">Update House</button>
+              <a href="/house"> <button type="button" class="btn btn-outline-danger">Cancel</button></a>
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <% include ../partials/footer %> 
+    <% include ../partials/scripts %> 
+
+  </body>
+
+  </html>

@@ -40,7 +40,7 @@ controller.edit = (req, res) => {
 controller.view = (req, res) => {
   const { HID } = req.params;
   req.getConnection((err, conn) => {
-    conn.query('SELECT R.HID, R.TID, R.DEPOSIT, R.RENT, R.START_DATE, R.END_DATE FROM RENTS R, HOUSE H WHERE H.HID = R.HID AND H.HID = ?', [HID], (err, rows) => {
+    conn.query('SELECT T.NAME, T.ADDRESS, T.PHONE, T.GENDER, T.AADHAR, T.AGE, H.MAINTENANCE, R.HID, R.TID, R.DEPOSIT, R.RENT, R.START_DATE, R.END_DATE FROM RENTS R, HOUSE H, TENANT T WHERE H.HID = R.HID AND T.TID = R.TID AND H.HID = ?', [HID], (err, rows) => {
       res.render('pages/house_view', {
         data: rows
       })
@@ -51,9 +51,9 @@ controller.view = (req, res) => {
 
 controller.update = (req, res) => {
   const { HID } = req.params;
-  const newTenant = req.body;
+  const newHouse = req.body;
   req.getConnection((err, conn) => {
-    conn.query('UPDATE HOUSE set ? WHERE HID = ?', [newTenant, HID], (err, rows) => {
+    conn.query('UPDATE HOUSE set ? WHERE HID = ?', [newHouse, HID], (err, rows) => {
       res.redirect('/house');
     });
   });

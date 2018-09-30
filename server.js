@@ -15,6 +15,7 @@ var app = express();
 // importing routes
 const tenantRoutes = require('./routes/tenant');
 const propertyRoutes = require('./routes/property');
+const houseRoutes = require('./routes/house');
 
 // ================================================================
 // setup our express application
@@ -39,6 +40,7 @@ app.use(express.urlencoded({extended: false}));
 // ================================================================
 app.use('/tenant', tenantRoutes);
 app.use('/property', propertyRoutes);
+app.use('/house', houseRoutes);
 routes(app);
 
 // ================================================================
