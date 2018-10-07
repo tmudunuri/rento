@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<% include ../partials/head %>
+<body>
+
+  <% include ../partials/nav %>
+
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-md-5 offset-md-3 card">
+        <div class="card-body">
+
+          <form action="/cotenant/update/<%= data.TID %>/<%= data.NAME %>" method="POST">
+
+            <div class="form-group">
+              <label for="NAME" class="col-form-label col-form-label-sm">Name</label>
+              <input type="text" name="NAME" value="<%= data.NAME%>" placeholder="Name" class="form-control" required pattern = "[A-Za-z .]+">
+            </div>
+            <div class="form-group">
+              <label for="RELATIONSHIP" class="col-form-label col-form-label-sm">Relationship</label>
+              <select name="RELATIONSHIP" class="custom-select">
+                <option selected="<%= data.RELATIONSHIP%>"><%= data.RELATIONSHIP%></option>
+                <option value="Parent">Parent</option>
+                <option value="Spouse">Spouse</option>
+                <option value="Child">Child</option>
+                <option value="Cousin">Cousin</option>
+                <option value="Friend">Friend</option>
+                <option value="Grandparent">Grandparent</option>
+                <option value="Grandchild">Grandchild</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="GENDER" class="col-form-label col-form-label-sm">Gender</label>
+              <select name="GENDER" class="custom-select">
+                <option selected="<%= data.GENDER%>"><%= data.GENDER%></option>
+                <option value="M">Male</option>
+                <option value="F">Female</option>
+              </select>
+            </div>
+
+
+            <div class="form-group">
+              <label for="BDATE" class="col-form-label col-form-label-sm">Date of Birth</label>
+              <input type="date" name="BDATE" class="form-control" required>
+            </div>
+
+            <button type="submit" class="btn btn-outline-success">Update Co-Tenant</button>
+            <a href="/tenant"> <button type="button" class="btn btn-outline-danger">Cancel</button></a>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <% include ../partials/footer %> 
+  <% include ../partials/scripts %> 
+
+</body>
+
+</html>

@@ -51,7 +51,7 @@
 
      <ul>
        <li class="card-text">Rent : ₹<%= data[i].RENT %></li>
-       <li class="card-text">Deliosit : ₹<%= data[i].DEPOSIT %></li>
+       <li class="card-text">Deposit : ₹<%= data[i].DEPOSIT %></li>
        <li class="card-text">Maintenance : ₹<%= data[i].MAINTENANCE %></li>
        <li class="card-text">Start : <%= data[i].START_DATE %></li>
        <li class="card-text">End : <%= data[i].END_DATE %></li>
@@ -63,9 +63,9 @@
      <p class="card-text">Age : <%= data[i].AGE %></p>
      <p class="card-text">Gender : <%= data[i].GENDER %></p>
 
-     <a href="/house/view/<%= data[i].HID %>" class="btn btn-outline-warning btn-sm">View Tenant</a>
-     <a href="/house/update/<%= data[i].HID %>" class="btn btn-outline-info btn-sm">Edit</a>
-     <a href="/house/delete/<%= data[i].HID %>" class="btn btn-outline-danger btn-sm">Delete</a>
+     <a href="/tenant/view/<%= data[i].TID %>" class="btn btn-outline-warning btn-sm">View Co-Tenant(s)</a>
+     <a href="/rents/update/<%= data[i].HID %>/<%= data[i].TID %>" class="btn btn-outline-info btn-sm">Edit</a>
+     <a href="/rents/delete/<%= data[i].HID %>/<%= data[i].TID %>" class="btn btn-outline-danger btn-sm">Delete</a>
    </span>
  </div>
  <% } %>

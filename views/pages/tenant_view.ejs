@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<% include ../partials/head %>
+
+<body>
+
+  <% include ../partials/nav %>
+
+
+
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-md-7">
+
+       <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="/tenant">Tenant</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active show" data-toggle="tab" href="/property">Property</a>
+        </li>
+      </ul>
+
+    </div> 
+
+  </div>
+  <div class="row">
+    <div class="btn-group" role="group" aria-label="Basic example">
+      <a href="/house"><button type="button" class="btn btn-secondary">Houses</button></a>
+      <a href="/tenant"><button type="button" class="btn btn-secondary">Back</button></a>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="container mt-8">
+
+ <button id="button_add" type="button" class="btn btn-secondary">Add</button>
+
+ <div class="list-group">
+
+  <% if (data) { %>
+  <% var len = data.length %>
+  <% for(var i = 0; i < len; i++) { %>
+  <a href="/cotenant/update/<%= data[i].TID %>/<%= data[i].NAME %>" class="list-group-item list-group-item-action flex-column align-items-start">
+    <div class="d-flex w-1000 justify-content-between">
+      <h5 class="mb-1"><%= data[i].NAME %></h5>
+      <small class="text-muted"><%= data[i].TID %></small>
+    </div>
+    <p class="mb-1"><%= data[i].RELATIONSHIP %></p>
+
+    <ul>
+     <li class="card-text">Gender : <%= data[i].GENDER %></li>
+     <li class="card-text">Age : <%= data[i].AGE %></li>
+     <li class="card-text">Date of Birth : <%= data[i].BDATE %></li>
+   </ul>
+
+   <a href="/cotenant/delete/<%= data[i].TID %>/<%= data[i].NAME %>" class="btn btn-SEC
+    btn-sm">Delete</a>
+
+  </a>
+  <% } %>
+  <% } %>
+</div>
+
+</div>
+
+
+
+
+
+<!-- The Add Modal -->
+<div id ="modal_add"class="modal">
+  <div class="modal-dialog" role="document">
+
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title">Add Co-Tenant</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="overflow-y: scroll; max-height:500px;">
+
+        <form action="/cotenant/add" method="POST">
+
+
+          <% if (data) { %>
+          <div class="form-group">
+            <fieldset>
+              <label class="col-form-label col-form-label-sm" for="readOnlyInput">Tenant ID</label>
+              <input name = "TID" class="form-control" id="readOnlyInput" value="<%= data[0].TID %>" placeholder="<%= data[0].TID %>"readonly="" type="text">
+            </fieldset>
+          </div>
+
+          <% } %>
+          <div class="form-group">
+            <label for="NAME" class="col-form-label col-form-label-sm">Name</label>
+            <input type="text" name="NAME" placeholder="Name"  class="form-control" required pattern="[A-Za-z .]+">
+          </div>
+          <div class="form-group">
+            <label for="TYPE" class="col-form-label col-form-label-sm">Relationship</label>
+            <select name="RELATIONSHIP" class="custom-select">
+              <option selected="Other">Other</option>
+              <option value="Parent">Parent</option>
+              <option value="Spouse">Spouse</option>
+              <option value="Child">Child</option>
+              <option value="Cousin">Cousin</option>
+              <option value="Friend">Friend</option>
+              <option value="Grandparent">Grandparent</option>
+              <option value="Grandchild">Grandchild</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="GENDER" class="col-form-label col-form-label-sm">Gender</label>
+            <select name="GENDER" class="custom-select" required>
+              <option selected="">Gender</option>
+              <option value="M">Male</option>
+              <option value="F">Female</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="BDATE" class="col-form-label col-form-label-sm">Date of Birth</label>
+            <input type="date" name="BDATE" class="form-control" required>
+          </div>
+
+          <button type="submit" class="btn btn-outline-success">Add Co-Tenant</button>
+          <button id = "button_cancel" type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div> 
+
+
+
+<script>
+// Get the modal
+var modal = document.getElementById('modal_add');
+
+// Get the button that opens the modal
+var btn = document.getElementById("button_add");
+var button_cancel = document.getElementById("button_cancel");
+
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+button_cancel.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+} 
+</script>
+
+
+
+
+
+
+
+
+<% include ../partials/footer %> 
+<% include ../partials/scripts %> 
+
+</body>
+
+</html>

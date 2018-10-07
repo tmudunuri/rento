@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<% include ../partials/head %>
+<body>
+
+  <% include ../partials/nav %>
+
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-md-5 offset-md-3 card">
+        <div class="card-body">
+
+          <form action="/rents/update/<%= data.HID %>/<%= data.TID %>" method="POST">
+
+           <div class="form-group">
+            <fieldset>
+              <label class="col-form-label col-form-label-sm" for="readOnlyInput">House ID</label>
+              <input class="form-control" id="readOnlyInput" placeholder="<%= data.HID %>" readonly="" type="text">
+            </fieldset>
+          </div>
+
+          <div class="form-group">
+            <fieldset>
+              <label class="col-form-label col-form-label-sm" for="readOnlyInput">Tenant ID</label>
+              <input class="form-control" id="readOnlyInput" placeholder="<%= data.TID %>" readonly="" type="text">
+            </fieldset>
+          </div>
+
+          <div class="form-group">
+            <label for="RENT" class="col-form-label col-form-label-sm">Rent</label>
+            <input type="number" name="RENT" value="<%= data.RENT%>" placeholder="Rent" class="form-control" required pattern = "[0-9]+">
+          </div>
+          <div class="form-group">
+            <label for="DEPOSIT" class="col-form-label col-form-label-sm">Deposit</label>
+            <input type="number" name="DEPOSIT" value="<%= data.DEPOSIT%>" placeholder="Capacity" class="form-control" required pattern = "[0-9]+">
+          </div>
+
+          <div class="form-group">
+            <label for="START_DATE" class="col-form-label col-form-label-sm">Start Date</label>
+            <input type="date" name="START_DATE" class="form-control" required>
+          </div>
+
+          <div class="form-group">
+            <label for="END_DATE" class="col-form-label col-form-label-sm">End Date</label>
+            <input type="date" name="END_DATE" class="form-control" required>
+          </div>
+
+          <button type="submit" class="btn btn-outline-success">Update Rent</button>
+          <a href="/tenant"> <button type="button" class="btn btn-outline-danger">Cancel</button></a>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<% include ../partials/footer %> 
+<% include ../partials/scripts %> 
+
+</body>
+
+</html>

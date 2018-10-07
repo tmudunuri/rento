@@ -16,6 +16,8 @@ var app = express();
 const tenantRoutes = require('./routes/tenant');
 const propertyRoutes = require('./routes/property');
 const houseRoutes = require('./routes/house');
+const cotenantRoutes = require('./routes/cotenant');
+const rentsRoutes = require('./routes/rents');
 
 // ================================================================
 // setup our express application
@@ -41,6 +43,8 @@ app.use(express.urlencoded({extended: false}));
 app.use('/tenant', tenantRoutes);
 app.use('/property', propertyRoutes);
 app.use('/house', houseRoutes);
+app.use('/cotenant', cotenantRoutes);
+app.use('/rents', rentsRoutes);
 routes(app);
 
 // ================================================================
