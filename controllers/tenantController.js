@@ -1,17 +1,18 @@
 const controller = {};
 
 controller.list = (req, res) => {
-  req.getConnection((err, conn) => {
-    conn.query('SELECT * FROM TENANT', (err, app) => {
-     if (err) {
-      res.json(err);
-    }
-    res.render('pages/tenant', {
-      data: app
+    req.getConnection((err, conn) => {
+      conn.query('SELECT * FROM TENANT', (err, app) => {
+       if (err) {
+        res.json(err);
+      }
+      res.render('pages/tenant', {
+        data: app
+      });
     });
-  });
-  });
+    });
 };
+
 
 controller.save = (req, res) => {
   const data = req.body;

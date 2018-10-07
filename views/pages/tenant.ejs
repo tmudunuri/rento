@@ -8,7 +8,6 @@
   <% include ../partials/nav %>
 
 
-
   <div class="container mt-5">
     <div class="row">
       <div class="col-md-7">
@@ -91,15 +90,15 @@
           <% if (data) { %>
           <% for(var i = 0; i < data.length; i++) { %>
           <tr>
-            
-              <td><%= data[i].TID %></td>
-              <td><a href="/tenant/view/<%= data[i].TID %>"><%= data[i].NAME %></a></td>
-              <td><%= data[i].AADHAR %></td>
-              <td><%= data[i].ADDRESS %></td>
-              <td><%= data[i].PHONE %></td>
-              <td><%= data[i].GENDER %></td>
-              <td><%= data[i].AGE %></td>
-              <td><%= data[i].BDATE %></td>
+
+            <td><%= data[i].TID %></td>
+            <td><a href="/tenant/view/<%= data[i].TID %>"><%= data[i].NAME %></a></td>
+            <td><%= data[i].AADHAR %></td>
+            <td><%= data[i].ADDRESS %></td>
+            <td><%= data[i].PHONE %></td>
+            <td><%= data[i].GENDER %></td>
+            <td><%= data[i].AGE %></td>
+            <td><%= data[i].BDATE %></td>
 
             <td>
               <a href="/tenant/update/<%= data[i].TID %>" class="btn btn-info">Edit</a>

@@ -2,7 +2,7 @@ const router = require('express').Router();
 
 const propertyController = require('../controllers/propertyController');
 
-router.get('/', propertyController.list);
+router.get('/',  propertyController.list);
 router.post('/add', propertyController.save);
 router.get('/update/:PID', propertyController.edit);
 router.get('/view/:PID', propertyController.view);
