@@ -21,7 +21,8 @@ Strategy = require('passport-github').Strategy;
 
 passport.use(new Strategy({
   clientID: "83804980b0695b84a854",
-  clientSecret: "67b4fa3a2cabed0e636d914c5160af0159a465d4"
+  clientSecret: "67b4fa3a2cabed0e636d914c5160af0159a465d4",
+  callbackURL: "http://rento.gq/tenant"
 },
 function(accessToken, refreshToken, profile, cb) {
   User.findOrCreate({ githubId: profile.id }, function (err, user) {
