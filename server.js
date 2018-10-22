@@ -13,8 +13,6 @@ Strategy = require('passport-github').Strategy;
 
 
 
-
-
 // ================================================================
 // Githunb oAth
 // ================================================================
@@ -65,18 +63,6 @@ app.get('/auth/github/callback',
   function(req, res) {
     res.redirect('/');
   });
-
-function ensureAuthenticated(req, res, next) {
-  if (req.isAuthenticated()) { return next(); }
-  res.redirect('/')
-}
-
-app.all('*', function(req,res,next){
-  if (req.path === '/' || req.path === '/login/github' || req.path === '/about' || req.path === '/contact')
-  next();
-  else
-  ensureAuthenticated(req,res,next);  
-});
 
 var routes = require('./routes/index.js');
 

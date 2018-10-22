@@ -1,5 +1,6 @@
 const controller = {};
 
+
 controller.list = (req, res) => {
     req.getConnection((err, conn) => {
       conn.query('SELECT * FROM TENANT', (err, app) => {
