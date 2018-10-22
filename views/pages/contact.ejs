@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<% include ../partials/head %>
+
+<body>
+
+	<% include ../partials/nav %>
+
+	<div class="container mt-5">
+		<div class="row">
+			<div id="map"></div>
+			<script>
+				function initMap() {
+					var uluru = {lat: 13.133363, lng: 77.56737680000003};
+					var map = new google.maps.Map(document.getElementById('map'), {
+						zoom: 14,
+						center: uluru,
+						mapTypeId: google.maps.MapTypeId.TERRAIN
+					});
+					var marker = new google.maps.Marker({
+						position: uluru,
+						map: map,
+						label: "Rento",
+						title: 'Uluru (Ayers Rock)'
+
+					});
+					var infowindow = new google.maps.InfoWindow({
+						content:'<strong>Rento Property Rental Management</strong> By Thrivikram Mudunuri <br>BMSIT Doddaballapur Main Road, Avalahalli, Yelahanka<br>560092 Bangalore<br>'
+					});
+					marker.addListener('click', function() {
+						infowindow.open(map, marker);
+					});
+
+				}
+
+			</script>
+			<script async defer
+			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDF0aW5BNCtrW-EvQSrCk08QOG6MRatmeA&callback=initMap">
+		</script>
+
+		<style>
+		#map {
+			height: 400px;
+			width: 100%;
+		}
+	</style>
+</div>
+</div>
+
+<% include ../partials/footer %>
+
+<% include ../partials/scripts %>
+
+</body>
+</html>

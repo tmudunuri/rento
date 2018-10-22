@@ -5,21 +5,53 @@
 
 <body>
 
-    <% include ../partials/nav %>
+	<% include ../partials/nav %>
 
-    <div class="jumbotron">
-      <h1 class="display-43">
-        Property Rental Management
-        <small class="text-muted">By Thrivikram Mudunuri</small>
-    </h1>
-    <p class="lead">A simple CRUD Application to manage Property Rentals.</p>
-    <hr class="my-4">
-    <p>It simplifies maintenance of property rentals for ownsers and tenants.</p>
-    <p class="lead">
-        <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-    </p>
-</div>
+	<div class="container mt-4">
+		<div class="row">
+			<div class="jumbotron">
+				<h1 class="display-43">
+					Property Rental Management
+					<small class="text-muted">DBMS 15CSL58 Mini Project</small>
+				</h1>
+				<p class="lead">A CRUD Application to manage Property Rentals.</p>
+				<hr class="my-4">
+				<p>A property manager is a third party who is hired by a landlord or property investor to manage the day-to-day operations at rental property. Their exact responsibilities will vary based on the type of property they are managing, the amount they are getting paid and the terms of the management contract. The Preoperty Rental Management Software aims to replace a typical rental manager. It simplifies maintenance of property rentals for owners and tenants.</p>
 
+				<div id = "by" class="alert alert-dismissible alert-secondary">
+					<button id = "cl" type="button" class="close" data-dismiss="alert">&times;</button>
+					<strong>USN - 1BY16IS057<br>Name - Thrivikram Mudunuri</strong><br>Dept. of ISE, BMSIT<br><a href="https://github.com/tmudunuri/property-rental-management" class="alert-link">View Source Code</a>.
+				</div>
+
+				<p class="lead">
+					<a class="btn btn-primary btn-lg" href="/login/github" role="button">Login via GitHUb</a>
+				</p>
+
+			</div>
+
+
+		</div>
+
+	</div>
+	<script>
+// Get the modal
+var modal = document.getElementById('by');
+
+// Get the <span> element that closes the modal
+var span = document.getElementById("cl");
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+	modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+	if (event.target == modal) {
+		modal.style.display = "block";
+	}
+} 
+</script>
 
 
 <% include ../partials/scripts %> 
