@@ -28,7 +28,8 @@
   <div class="row">
     <div class="btn-group" role="group" aria-label="Basic example">
       <a href="/house"><button type="button" class="btn btn-secondary">Houses</button></a>
-      <a href="/property"><button type="button" class="btn btn-secondary">Back</button></a>
+      <button id="button_add" type="button" class="btn btn-secondary">Add Tenant</button>
+      <a href="/house"><button type="button" class="btn btn-secondary">Back</button></a>
     </div>
   </div>
 </div>
@@ -72,6 +73,104 @@
  <% } %>
 </div>
 </div>
+
+
+
+
+
+<!-- The Add Modal -->
+<div id ="modal_add"class="modal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add Tenant</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="overflow-y: scroll; max-height:500px;">
+        <form action="/rents/add" method="POST">
+
+         <div class="form-group">
+          <fieldset>
+            <label class="col-form-label col-form-label-sm">House ID</label>
+            <input name = "HID" class="form-control" placeholder="House ID" type="text" required pattern = "[0-9]+">
+          </fieldset>
+        </div>
+
+        <div class="form-group">
+          <fieldset>
+            <label class="col-form-label col-form-label-sm" >Tenant ID</label>
+            <input name = "TID" class="form-control" placeholder="Tenant ID"  type="text" required pattern = "[0-9]+">
+          </fieldset>
+        </div>
+
+        <div class="form-group">
+          <label for="RENT" class="col-form-label col-form-label-sm">Rent</label>
+          <input type="number" name="RENT" value="" placeholder="Rent" class="form-control" required pattern = "[0-9]+">
+        </div>
+        <div class="form-group">
+          <label for="DEPOSIT" class="col-form-label col-form-label-sm">Deposit</label>
+          <input type="number" name="DEPOSIT" value="" placeholder="Capacity" class="form-control" required pattern = "[0-9]+">
+        </div>
+
+        <div class="form-group">
+          <label for="START_DATE" class="col-form-label col-form-label-sm">Start Date</label>
+          <input type="date" name="START_DATE" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+          <label for="END_DATE" class="col-form-label col-form-label-sm">End Date</label>
+          <input type="date" name="END_DATE" class="form-control" required>
+        </div>
+
+        <button type="submit" class="btn btn-outline-success">Add Tenant</button>
+        <button id = "button_cancel" type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>
+      </form>
+    </div>
+  </div>
+</div>
+</div> 
+
+
+
+<script>
+// Get the modal
+var modal = document.getElementById('modal_add');
+
+// Get the button that opens the modal
+var btn = document.getElementById("button_add");
+var button_cancel = document.getElementById("button_cancel");
+
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+button_cancel.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+} 
+</script>
+
+
+
+
 
 
 <% include ../partials/footer %> 

@@ -6,7 +6,7 @@ controller.save = (req, res) => {
   req.getConnection((err, connection) => {
     const query = connection.query('INSERT INTO RENTS set ?', data, (err, customer) => {
       console.log(customer)
-      res.redirect('/tenant');
+      res.redirect('/house');
     })
   })
 };
@@ -36,8 +36,8 @@ controller.update = (req, res) => {
 controller.delete = (req, res) => {
   const { HID,TID } = req.params;
   req.getConnection((err, connection) => {
-    connection.query('DELETE FROM CO_TENANT WHERE HID = ? AND TID = ?', [HID,TID], (err, rows) => {
-      res.redirect('/tenant');
+    connection.query('DELETE FROM RENTS WHERE HID = ? AND TID = ?', [HID,TID], (err, rows) => {
+      res.redirect('/house');
     });
   });
 }
