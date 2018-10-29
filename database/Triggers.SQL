@@ -1,0 +1,12 @@
+delimiter //
+CREATE TRIGGER rent_date_check BEFORE UPDATE ON RENTS
+   FOR EACH ROW
+   BEGIN
+   	IF NEW.START_DATE > NEW.END_DATE THEN
+   	SET NEW.START_DATE = NULL;
+	END IF;
+END;//
+delimiter ;
+
+
+
