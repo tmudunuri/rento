@@ -29,7 +29,7 @@ controller.save = (req, res) => {
 controller.view = (req, res) => {
   const { TID } = req.params;
   req.getConnection((err, conn) => {
-    conn.query('SELECT CO.NAME, CO.GENDER, CO.AGE, CO.RELATIONSHIP, CO.TID, CO.BDATE FROM HOUSE H, TENANT T, CO_TENANT CO, RENTS R WHERE R.HID = H.HID AND R.TID = T.TID AND T.TID = CO.TID AND T.TID = ? GROUP BY NAME', [TID], (err, rows) => {
+    conn.query('SELECT CO.NAME, CO.GENDER, CO.AGE, CO.RELATIONSHIP, CO.TID, CO.BDATE, T.NAME TNAME FROM HOUSE H, TENANT T, CO_TENANT CO, RENTS R WHERE R.HID = H.HID AND R.TID = T.TID AND T.TID = CO.TID AND T.TID = ? GROUP BY CO.NAME', [TID], (err, rows) => {
       res.render('pages/tenant_view', {
         data: rows
       })

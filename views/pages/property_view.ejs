@@ -37,32 +37,67 @@
 
 <div class="container mt-2 mx-auto" style="overflow-y: scroll; height:auto; max-height: 520px">
 
-  <div id = "house_table" class="row mx-auto">
-   <% if (data) { %>
-   <% var len = data.length %>
-   <% for(var i = 0; i < len; i++) { %>
+ <% if (data.length > 0) { %>
+ <div class="alert alert-dismissible alert-success">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <p><%= data.length %> Houses have been retrieved.</p>
+</div>
+<% } %>
 
-   <div class="card bg-light mb-4 mx-auto" style="max-width: 20rem;">
-    <span class="card-header"><%= data[i].HID %></span>
-    <span class="card-body">
-     <h4 class="card-title pt"><%= data[i].TYPE %></h4>
-     <ul>
-       <li class="card-text">Floor : <%= data[i].FLOOR %></li>
-       <li class="card-text">Rooms : <%= data[i].ROOMS %></li>
-       <li class="card-text">Area : <%= data[i].AREA %> sqft</li>
-       <li class="card-text">Parking : <%= data[i].PARKING %></li>
-       <li class="card-text">Furnished : <%= data[i].FURNISHED %></li>
-       <li class="card-text">Maintenance : ₹<%= data[i].MAINTENANCE %></li>
-     </ul>
-     <a href="/house/view/<%= data[i].HID %>" class="btn btn-outline-warning btn-sm">View</a>
-     <a href="/house/update/<%= data[i].HID %>" class="btn btn-outline-info btn-sm">Edit</a>
-     <a href="/house/delete/<%= data[i].HID %>" class="btn btn-outline-danger btn-sm">Delete</a>
-   </span>
- </div>
- <% } %>
- <% } %>
+
+<% if (data.length == 0) { %>
+<div class="alert alert-dismissible alert-danger">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <p>No Houses have been retrieved.</p>
+</div>
+<% } %>
+
+
+<div id = "house_table" class="row mx-auto">
+ <% if (data) { %>
+ <% var len = data.length %>
+ <% for(var i = 0; i < len; i++) { %>
+
+ <div class="card bg-light mb-4 mx-auto" style="max-width: 20rem;">
+  <span class="card-header"><%= data[i].HID %></span>
+  <span class="card-body">
+   <h4 class="card-title pt"><%= data[i].TYPE %></h4>
+   <ul>
+     <li class="card-text">Floor : <%= data[i].FLOOR %></li>
+     <li class="card-text">Rooms : <%= data[i].ROOMS %></li>
+     <li class="card-text">Area : <%= data[i].AREA %> sqft</li>
+     <li class="card-text">Parking : <%= data[i].PARKING %></li>
+     <li class="card-text">Furnished : <%= data[i].FURNISHED %></li>
+     <li class="card-text">Maintenance : ₹<%= data[i].MAINTENANCE %></li>
+   </ul>
+   <a href="/house/view/<%= data[i].HID %>" class="btn btn-outline-warning btn-sm">View</a>
+   <a href="/house/update/<%= data[i].HID %>" class="btn btn-outline-info btn-sm">Edit</a>
+   <a href="/house/delete/<%= data[i].HID %>" class="btn btn-outline-danger btn-sm">Delete</a>
+ </span>
+</div>
+<% } %>
+<% } %>
 </div>
 </div>
+
+
+
+<!-- Alerts -->
+<script type="text/javascript">
+
+  var md = document.getElementsByClassName("alert");
+  var sp = document.getElementsByClassName("close");
+  sp[0].onclick = function() {
+    md[0].style.display = "none";
+  }
+
+  sp[1].onclick = function() {
+    md[1].style.display = "none";
+  }
+
+</script>
+
+
 
 <% include ../partials/footer %> 
 <% include ../partials/scripts %> 

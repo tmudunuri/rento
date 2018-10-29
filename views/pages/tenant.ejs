@@ -34,6 +34,20 @@
 
 
 <div class="container mt-2">
+  <% if (data.length > 0) { %>
+  <div class="alert alert-dismissible alert-success">
+    <button type="button" class="close close_alert" data-dismiss="alert">&times;</button>
+    <p><%= data.length %> Tenants have been retrieved.</p>
+  </div>
+  <% } %>
+
+
+  <% if (data.length == 0) { %>
+  <div class="alert alert-dismissible alert-danger">
+    <button type="button" class="close close_alert" data-dismiss="alert">&times;</button>
+    <p>No Tenants have been retrieved.</p>
+  </div>
+  <% } %>
 
   <table class="table table-bordered table-hover">
     <tr>
@@ -124,7 +138,7 @@
 
       <div class="modal-header">
         <h5 class="modal-title">Add Tenant</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button type="button" class="close close_modal" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -192,7 +206,7 @@ var button_cancel = document.getElementById("button_cancel");
 
 
 // Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+var span = document.getElementsByClassName("close_modal")[0];
 
 // When the user clicks on the button, open the modal
 btn.onclick = function() {
@@ -252,7 +266,20 @@ window.onclick = function(event) {
 </script>
 
 
+<!-- Alerts -->
+<script type="text/javascript">
 
+  var md = document.getElementsByClassName("alert");
+  var sp = document.getElementsByClassName("close_alert");
+  sp[0].onclick = function() {
+    md[0].style.display = "none";
+  }
+
+  sp[1].onclick = function() {
+    md[1].style.display = "none";
+  }
+
+</script>
 
 
 

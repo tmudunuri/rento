@@ -29,6 +29,7 @@
     <div class="btn-group" role="group" aria-label="Basic example">
       <a href="/house"><button type="button" class="btn btn-secondary">Houses</button></a>
       <a href="/tenant"><button type="button" class="btn btn-secondary">Back</button></a>
+      <button id="button_add" type="button" class="btn btn-secondary">Add</button>
     </div>
   </div>
 </div>
@@ -38,11 +39,22 @@
 
 
 
-
-
 <div class="container mt-8">
 
- <button id="button_add" type="button" class="btn btn-secondary">Add</button>
+   <% if (data.length > 0) { %>
+  <div class="alert alert-dismissible alert-success">
+    <button type="button" class="close close_alert" data-dismiss="alert">&times;</button>
+    <p><%= data.length %> Co-tenant(s) have been retrieved for <b><%= data[0].TNAME %></b></p>
+  </div>
+  <% } %>
+
+
+  <% if (data.length == 0) { %>
+  <div class="alert alert-dismissible alert-danger">
+    <button type="button" class="close close_alert" data-dismiss="alert">&times;</button>
+    <p>No Co-tenants have been retrieved.</p>
+  </div>
+  <% } %>
 
  <div class="list-group">
 
@@ -84,7 +96,7 @@
 
       <div class="modal-header">
         <h5 class="modal-title">Add Co-Tenant</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button type="button" class="close close_modal" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -165,7 +177,7 @@ var button_cancel = document.getElementById("button_cancel");
 
 
 // Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+var span = document.getElementsByClassName("close_modal")[0];
 
 // When the user clicks on the button, open the modal
 btn.onclick = function() {
@@ -193,7 +205,20 @@ window.onclick = function(event) {
 
 
 
+<!-- Alerts -->
+<script type="text/javascript">
 
+  var md = document.getElementsByClassName("alert");
+  var sp = document.getElementsByClassName("close_alert");
+  sp[0].onclick = function() {
+    md[0].style.display = "none";
+  }
+
+  sp[1].onclick = function() {
+    md[1].style.display = "none";
+  }
+
+</script>
 
 
 <% include ../partials/footer %> 

@@ -28,8 +28,11 @@
   <div class="row">
     <div class="btn-group" role="group" aria-label="Basic example">
       <a href="/house"><button type="button" class="btn btn-secondary">Houses</button></a>
-      <button id="button_add" type="button" class="btn btn-secondary">Add Tenant</button>
+      
       <a href="/house"><button type="button" class="btn btn-secondary">Back</button></a>
+      <% if (data.length == 0) { %>
+      <button id="button_add" type="button" class="btn btn-secondary">Add Tenant</button>
+      <% } %>
     </div>
   </div>
 </div>
@@ -39,38 +42,47 @@
 
 <div class="container mt-2 mx-auto">
 
-  <div id = "rents_table" class="row mx-auto">
-   <% if (data) { %>
-   <% var len = data.length %>
-   <% for(var i = 0; i < len; i++) { %>
 
-   <div class="card bg-primary text-white mb-6 mx-auto" style="max-width: 40rem;">
-    <span class="card-header"><%= data[i].HID %></span>
-    <span class="card-body">
-     <h4 class="card-title pt"><%= data[i].TID %> : <%= data[i].NAME %></h4>
+ <% if (data.length == 0) { %>
+ <div class="alert alert-dismissible alert-success">
+  <button type="button" class="close close_alert" data-dismiss="alert">&times;</button>
+  <p>This House is availbale for Rent. Add Tenant.</p>
+</div>
+<% } %>
 
 
-     <ul>
-       <li class="card-text">Rent : ₹<%= data[i].RENT %></li>
-       <li class="card-text">Deposit : ₹<%= data[i].DEPOSIT %></li>
-       <li class="card-text">Maintenance : ₹<%= data[i].MAINTENANCE %></li>
-       <li class="card-text">Start : <%= data[i].START_DATE %></li>
-       <li class="card-text">End : <%= data[i].END_DATE %></li>
-     </ul>
+<div id = "rents_table" class="row mx-auto">
+ <% if (data) { %>
+ <% var len = data.length %>
+ <% for(var i = 0; i < len; i++) { %>
 
-     <p class="card-text">Aadhar : <%= data[i].AADHAR %></p>
-     <p class="card-text">Address : <%= data[i].ADDRESS %></p>
-     <p class="card-text">Phone : <%= data[i].PHONE %></p>
-     <p class="card-text">Age : <%= data[i].AGE %></p>
-     <p class="card-text">Gender : <%= data[i].GENDER %></p>
+ <div class="card bg-primary text-white mb-6 mx-auto" style="max-width: 40rem;">
+  <span class="card-header"><%= data[i].HID %></span>
+  <span class="card-body">
+   <h4 class="card-title pt"><%= data[i].TID %> : <%= data[i].NAME %></h4>
 
-     <a href="/tenant/view/<%= data[i].TID %>" class="btn btn-outline-warning btn-sm">View Co-Tenant(s)</a>
-     <a href="/rents/update/<%= data[i].HID %>/<%= data[i].TID %>" class="btn btn-outline-info btn-sm">Edit</a>
-     <a href="/rents/delete/<%= data[i].HID %>/<%= data[i].TID %>" class="btn btn-outline-danger btn-sm">Delete</a>
-   </span>
- </div>
- <% } %>
- <% } %>
+
+   <ul>
+     <li class="card-text">Rent : ₹<%= data[i].RENT %></li>
+     <li class="card-text">Deposit : ₹<%= data[i].DEPOSIT %></li>
+     <li class="card-text">Maintenance : ₹<%= data[i].MAINTENANCE %></li>
+     <li class="card-text">Start : <%= data[i].START_DATE %></li>
+     <li class="card-text">End : <%= data[i].END_DATE %></li>
+   </ul>
+
+   <p class="card-text">Aadhar : <%= data[i].AADHAR %></p>
+   <p class="card-text">Address : <%= data[i].ADDRESS %></p>
+   <p class="card-text">Phone : <%= data[i].PHONE %></p>
+   <p class="card-text">Age : <%= data[i].AGE %></p>
+   <p class="card-text">Gender : <%= data[i].GENDER %></p>
+
+   <a href="/tenant/view/<%= data[i].TID %>" class="btn btn-outline-warning btn-sm">View Co-Tenant(s)</a>
+   <a href="/rents/update/<%= data[i].HID %>/<%= data[i].TID %>" class="btn btn-outline-info btn-sm">Edit</a>
+   <a href="/rents/delete/<%= data[i].HID %>/<%= data[i].TID %>" class="btn btn-outline-danger btn-sm">Delete</a>
+ </span>
+</div>
+<% } %>
+<% } %>
 </div>
 </div>
 
@@ -84,7 +96,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title">Add Tenant</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button type="button" class="close close_modal" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -107,11 +119,11 @@
 
         <div class="form-group">
           <label for="RENT" class="col-form-label col-form-label-sm">Rent</label>
-          <input type="number" name="RENT" value="" placeholder="Rent" class="form-control" required pattern = "[0-9]+">
+          <input type="number" name="RENT" value="" placeholder="Rent in ₹" class="form-control" required pattern = "[0-9]+">
         </div>
         <div class="form-group">
           <label for="DEPOSIT" class="col-form-label col-form-label-sm">Deposit</label>
-          <input type="number" name="DEPOSIT" value="" placeholder="Capacity" class="form-control" required pattern = "[0-9]+">
+          <input type="number" name="DEPOSIT" value="" placeholder="Deposit in ₹" class="form-control" required pattern = "[0-9]+">
         </div>
 
         <div class="form-group">
@@ -144,7 +156,7 @@ var button_cancel = document.getElementById("button_cancel");
 
 
 // Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+var span = document.getElementsByClassName("close_modal")[0];
 
 // When the user clicks on the button, open the modal
 btn.onclick = function() {
@@ -170,6 +182,20 @@ window.onclick = function(event) {
 
 
 
+<!-- Alerts -->
+<script type="text/javascript">
+
+  var md = document.getElementsByClassName("alert");
+  var sp = document.getElementsByClassName("close_alert");
+  sp[0].onclick = function() {
+    md[0].style.display = "none";
+  }
+
+  sp[1].onclick = function() {
+    md[1].style.display = "none";
+  }
+
+</script>
 
 
 
