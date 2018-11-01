@@ -12,7 +12,12 @@
         <div class="card-body">
 
           <form action="/tenant/update/<%= data.TID %>" method="POST">
-
+            <div class="form-group">
+              <fieldset>
+                <label class="col-form-label col-form-label-sm" for="readOnlyInput">Tenant ID</label>
+                <input class="form-control" id="readOnlyInput" placeholder="<%= data.TID %>" readonly="" type="number">
+              </fieldset>
+            </div>
             <div class="form-group">
               <label for="FNAME" class="col-form-label col-form-label-sm">First Name</label>
               <input type="text" name="FNAME" value="<%= data.FNAME%>" placeholder="First Name"  class="form-control" required pattern="[A-Za-z ]+">

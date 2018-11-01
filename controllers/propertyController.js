@@ -40,7 +40,7 @@ controller.edit = (req, res) => {
 controller.view = (req, res) => {
   const { PID } = req.params;
   req.getConnection((err, conn) => {
-    conn.query('SELECT H.HID, H.ROOMS, H.FLOOR, H.AREA, H.TYPE, H.MAINTENANCE, H.PARKING, H.FURNISHED, P.PID FROM PROPERTY P, HOUSE H WHERE H.PID = P.PID AND P.PID = ?', [PID], (err, rows) => {
+    conn.query('SELECT H.HID, H.ROOMS, H.FLOOR, H.AREA, H.MAINTENANCE, H.PARKING, H.FURNISHED, P.PID, P.NAME FROM PROPERTY P, HOUSE H WHERE H.PID = P.PID AND P.PID = ?', [PID], (err, rows) => {
       res.render('pages/property_view', {
         data: rows
       })

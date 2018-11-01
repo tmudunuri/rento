@@ -11,19 +11,16 @@
       <div class="col-md-5 offset-md-3 card">
         <div class="card-body">
 
-          
+
           <form action="/house/update/<%= data.HID %>" method="POST">
+
             <div class="form-group">
-              <label for="TYPE" class="col-form-label col-form-label-sm">Property Type</label>
-              <select name="TYPE" class="custom-select">
-                <option selected="<%= data.TYPE%>"><%= data.TYPE%></option>
-                <option value="Apartment">Apartment</option>
-                <option value="Bungalow">Bungalow</option>
-                <option value="Cottage">Cottage</option>
-                <option value="Duplex">Duplex</option>
-                <option value="Farmhouse">Farmhouse</option>
-              </select>
+              <fieldset>
+                <label class="col-form-label col-form-label-sm" for="readOnlyInput">House ID</label>
+                <input class="form-control" id="readOnlyInput" placeholder="<%= data.HID %>" readonly="" type="number">
+              </fieldset>
             </div>
+
             <div class="form-group">
               <label for="FLOOR" class="col-form-label col-form-label-sm">Floor</label>
               <input type="number" name="FLOOR" value="<%= data.FLOOR%>" placeholder="Floor" class="form-control" required pattern = "[0-9]{0-3}">

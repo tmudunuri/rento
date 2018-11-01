@@ -13,6 +13,16 @@
 
           <form action="/property/update/<%= data.PID %>" method="POST">
             <div class="form-group">
+              <fieldset>
+                <label class="col-form-label col-form-label-sm" for="readOnlyInput">Property ID</label>
+                <input class="form-control" id="readOnlyInput" placeholder="<%= data.PID %>" readonly="" type="number">
+              </fieldset>
+            </div>
+            <div class="form-group">
+              <label for="NAME" class="col-form-label col-form-label-sm">Name</label>
+              <input type="text" name="NAME" placeholder="Name" value="<%= data.NAME%>" class="form-control" required pattern = "[A-Za-z0-9 .#-,]+">
+            </div>
+            <div class="form-group">
               <label for="TYPE" class="col-form-label col-form-label-sm">Property Type</label>
               <select name="TYPE" class="custom-select">
                 <option selected="<%= data.TYPE%>"><%= data.TYPE%></option>

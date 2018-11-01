@@ -40,7 +40,7 @@
  <% if (data.length > 0) { %>
  <div class="alert alert-dismissible alert-success">
   <button type="button" class="close" data-dismiss="alert">&times;</button>
-  <p><%= data.length %> Houses have been retrieved.</p>
+  <p><%= data.length %> House(s) has/have been retrieved.</p>
 </div>
 <% } %>
 
@@ -61,7 +61,7 @@
  <div class="card bg-light mb-4 mx-auto" style="max-width: 20rem;">
   <span class="card-header"><%= data[i].HID %></span>
   <span class="card-body">
-   <h4 class="card-title pt"><%= data[i].TYPE %></h4>
+   <h4 class="card-title pt">House <%= data[i].HID %></h4>
    <ul>
      <li class="card-text">Floor : <%= data[i].FLOOR %></li>
      <li class="card-text">Rooms : <%= data[i].ROOMS %></li>
