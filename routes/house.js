@@ -8,5 +8,6 @@ router.get('/update/:HID', houseController.edit);
 router.get('/view/:HID', houseController.view);
 router.post('/update/:HID', houseController.update);
 router.get('/delete/:HID', houseController.delete);
+router.get('/refresh', houseController.refresh);
 
 module.exports = router;

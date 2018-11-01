@@ -8,5 +8,6 @@ router.get('/update/:PID', propertyController.edit);
 router.get('/view/:PID', propertyController.view);
 router.post('/update/:PID', propertyController.update);
 router.get('/delete/:PID', propertyController.delete);
+router.get('/refresh', propertyController.refresh);
 
 module.exports = router;

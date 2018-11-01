@@ -1,12 +1,98 @@
 delimiter //
-CREATE TRIGGER rent_date_check BEFORE UPDATE ON RENTS
-   FOR EACH ROW
-   BEGIN
-   	IF NEW.START_DATE > NEW.END_DATE THEN
-   	SET NEW.START_DATE = NULL;
+DROP PROCEDURE IF EXISTS auto_inc_reset// 
+CREATE PROCEDURE auto_inc_reset(IN N INT(1))
+BEGIN
+	IF N = 1 THEN
+	ALTER TABLE TENANT AUTO_INCREMENT = 1;
+	END IF;
+	IF N = 2 THEN
+	ALTER TABLE PROPERTY AUTO_INCREMENT = 1;
+	END IF;
+	IF N = 3 THEN
+	ALTER TABLE HOUSE AUTO_INCREMENT = 1;
 	END IF;
 END;//
 delimiter ;
 
 
 
+
+#############
+
+
+
+delimiter //
+CREATE TRIGGER age_tenant_insert  
+BEFORE INSERT ON TENANT
+FOR EACH ROW  
+BEGIN  
+    SET NEW.AGE = (YEAR(NOW()) - YEAR(NEW.BDATE)- (DATE_FORMAT(NOW(), '%m%d') < DATE_FORMAT(NEW.BDATE, '%m%d')));
+END;//
+delimiter ;
+
+
+
+delimiter //
+CREATE TRIGGER age_tenant_update  
+BEFORE UPDATE ON TENANT
+FOR EACH ROW  
+BEGIN  
+    SET NEW.AGE = (YEAR(NOW()) - YEAR(NEW.BDATE)- (DATE_FORMAT(NOW(), '%m%d') < DATE_FORMAT(NEW.BDATE, '%m%d')));
+END;//
+delimiter ;
+
+
+
+delimiter //
+CREATE TRIGGER age_cotenant_insert  
+BEFORE INSERT ON CO_TENANT
+FOR EACH ROW  
+BEGIN  
+    SET NEW.AGE = (YEAR(NOW()) - YEAR(NEW.BDATE)- (DATE_FORMAT(NOW(), '%m%d') < DATE_FORMAT(NEW.BDATE, '%m%d')));
+END;//
+delimiter ;
+
+
+delimiter //
+CREATE TRIGGER age_cotenant_update  
+BEFORE UPDATE ON CO_TENANT
+FOR EACH ROW  
+BEGIN  
+    SET NEW.AGE = (YEAR(NOW()) - YEAR(NEW.BDATE)- (DATE_FORMAT(NOW(), '%m%d') < DATE_FORMAT(NEW.BDATE, '%m%d')));
+END;//
+delimiter ;
+
+
+
+
+delimiter //
+CREATE TRIGGER rent_date_check_insert
+BEFORE INSERT ON RENTS
+FOR EACH ROW  
+BEGIN 
+	DECLARE temp DATE;
+	IF NEW.START_DATE > NEW.END_DATE THEN
+	SET temp = NEW.END_DATE;
+	SET NEW.END_DATE = NEW.START_DATE;
+	SET NEW.START_DATE = temp;
+	END IF;
+END;//
+delimiter ;
+
+
+
+
+
+delimiter //
+CREATE TRIGGER rent_date_check_update
+BEFORE UPDATE ON RENTS
+FOR EACH ROW  
+BEGIN 
+	DECLARE temp DATE;
+	IF NEW.START_DATE > NEW.END_DATE THEN
+	SET temp = NEW.END_DATE;
+	SET NEW.END_DATE = NEW.START_DATE;
+	SET NEW.START_DATE = temp;
+	END IF;
+END;//
+delimiter ;

@@ -8,6 +8,7 @@ router.get('/update/:TID', tenantController.edit);
 router.get('/view/:TID', tenantController.view);
 router.post('/update/:TID', tenantController.update);
 router.get('/delete/:TID', tenantController.delete);
+router.get('/refresh', tenantController.refresh);
 
 module.exports = router;
 

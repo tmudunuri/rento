@@ -68,4 +68,14 @@ controller.delete = (req, res) => {
   });
 }
 
+
+controller.refresh = (req, res) => {
+  req.getConnection((err, connection) => {
+  connection.query('CALL auto_inc_reset(3)', (err, rows) => {
+      res.redirect('/house');
+    });
+  });
+}
+
+
 module.exports = controller;
