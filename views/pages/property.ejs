@@ -56,7 +56,10 @@
         <input id="pid_filter" class="form-control form-control-sm" onkeyup="property_filter(0)" placeholder="PID"type="text">
       </td>
       <td>
-        <input id="type_filter" class="form-control form-control-sm" onkeyup="property_filter(1)" placeholder="Type"type="text">
+        <input id="name_filter" class="form-control form-control-sm" onkeyup="property_filter(1)" placeholder="Name"type="text">
+      </td>
+      <td>
+        <input id="type_filter" class="form-control form-control-sm" onkeyup="property_filter(2)" placeholder="Type"type="text">
       </td>
     </tr>
   </table>
@@ -188,7 +191,8 @@ window.onclick = function(event) {
   var input, filter, table, tr, td, i;
   switch(j) {
     case 0 : input = document.getElementById("pid_filter"); break;
-    case 1 : input = document.getElementById("type_filter"); break;
+    case 1 : input = document.getElementById("name_filter"); break;
+    case 2 : input = document.getElementById("type_filter"); break;
   }
   filter = input.value.toUpperCase();
   table = document.getElementById("property_table");
