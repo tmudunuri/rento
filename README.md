@@ -22,7 +22,7 @@ availability of a house. If the house is available then the system allows the le
 - The main purpose of this software is to eliminate the hassle of manually managing numerous rental properties and associated tenants. The application aims to ease the process of onboarding tenants while also keeping an updated record of details of all the tenants. Negotiated rentals agreed upon by the lessor and the tenant may be recorded to avoid potential conflicts/ complications. 
 
 ## Usage
-![Working Demo](https://raw.githubusercontent.com/tmudunuri/property-rental-management/master/README/Main.gif)
+![Working Demo](/README/Main.gif)
 - The app contains multiple search filters to view properties, individual house units and tenants.
 - Each house unit is assigned an individual primary tenant.
 - A primary tenant may contain co-tenants sharing the house unit.
@@ -40,12 +40,12 @@ There are 3 main entities in the database design:
 
 ### ER Diagram
 
-![Entity–Relationship Diagram](https://raw.githubusercontent.com/tmudunuri/property-rental-management/master/README/ER.png)
+![Entity–Relationship Diagram](/README/ER.png)
 
 
 ### ER Schema
 
-![Entity–Relationship Schema](https://raw.githubusercontent.com/tmudunuri/property-rental-management/master/README/Schema.jpg)
+![Entity–Relationship Schema](/README/Schema.jpg)
 
 ## Author
 **Thrivikram Mudunuri** — [@tmudunuri](https://github.com/tmudunuri)
